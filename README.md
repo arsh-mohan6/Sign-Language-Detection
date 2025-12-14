@@ -24,7 +24,7 @@ Sign-Language-Detection/
 │   └── realtime_predict.py
 │
 ├── report/                       # accuracy and loss plots
-│   └── training_curve.png
+│   └── Accuracy.png
 │
 ├── requirements.txt              # all dependencies (Python + libraries)
 ├── venv/                         # virtual environment
