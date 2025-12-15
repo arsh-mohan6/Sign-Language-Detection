@@ -7,17 +7,13 @@ from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropou
 from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from tensorflow.keras.optimizers import Adam
 
-# ---------------------
-# Configuration
-# ---------------------
+
 DATA_DIR = "../dataset"   #  dataset folder is now one level up
 IMG_SIZE = 128
 BATCH_SIZE = 32
 EPOCHS = 40  # slightly more training opportunity
 
-# ---------------------
-# Data Preparation
-# ---------------------
+
 datagen = ImageDataGenerator(
     rescale=1.0 / 255,
     rotation_range=25,
@@ -48,9 +44,6 @@ val_data = datagen.flow_from_directory(
 
 num_classes = len(train_data.class_indices)
 
-# ---------------------
-# CNN Model (stronger + more stable)
-# ---------------------
 model = Sequential([
     Conv2D(32, (3, 3), activation='relu', input_shape=(IMG_SIZE, IMG_SIZE, 3)),
     BatchNormalization(),
@@ -74,9 +67,7 @@ model = Sequential([
     Dense(num_classes, activation='softmax')
 ])
 
-# ---------------------
-# Compilation (fine-tuned)
-# ---------------------
+
 optimizer = Adam(learning_rate=1e-4)
 model.compile(optimizer=optimizer,
               loss='categorical_crossentropy',
@@ -95,9 +86,6 @@ reduce_lr = ReduceLROnPlateau(monitor='val_loss',
                               min_lr=1e-6,
                               verbose=1)
 
-# ---------------------
-# Training
-# ---------------------
 history = model.fit(
     train_data,
     validation_data=val_data,
@@ -105,16 +93,12 @@ history = model.fit(
     callbacks=[early_stop, reduce_lr]
 )
 
-# ---------------------
-# Save Model
-# ---------------------
+
 os.makedirs("../model", exist_ok=True)  #  create model folder if not exists
 model.save("../model/sign_language_cnn_model_full.h5")
 print("\n Model saved to '../model/sign_language_cnn_model_full.h5'")
 
-# ---------------------
-# Plot Training History
-# ---------------------
+
 plt.figure(figsize=(12, 5))
 
 plt.subplot(1, 2, 1)
