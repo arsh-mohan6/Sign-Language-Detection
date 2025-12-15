@@ -9,31 +9,32 @@ Built step-by-step from dataset preparation to model training, evaluation, and r
 
 ---
 
-## 🧭 Project Structure
+##  Project Structure
 
 ```text
 Sign-Language-Detection/
 │
-├── dataset/                      # training images (6 gesture classes)
+├── dataset/                     
 │
-├── model/                        # trained CNN model (.h5 file)
+├── model/                        
 │   └── sign_language_cnn_model_full.h5
 │
-├── notebooks/                    # Python scripts for training and prediction
+├── notebooks/                   
 │   ├── train_cnn.py
 │   └── realtime_predict.py
 │
-├── report/                       # accuracy and loss plots
+├── report/                      
 │   └── Accuracy.png
+│   └── Epoche.png
 │
-├── requirements.txt              # all dependencies (Python + libraries)
-├── venv/                         # virtual environment
+├── requirements.txt            
+├── venv/                         
 └── README.md
 ```
 
 ---
 
-## 🎯 Project Overview
+##  Project Overview
 
 This project demonstrates an **end-to-end computer vision workflow**:
 
@@ -45,7 +46,7 @@ This project demonstrates an **end-to-end computer vision workflow**:
 
 ---
 
-## 🧠 Dataset
+##  Dataset
 
 - **Classes:** 6 (Bye, Hello, No, Perfect, Thank You, Yes)  
 - **Images per Class:** ~400  
@@ -58,7 +59,7 @@ This project demonstrates an **end-to-end computer vision workflow**:
 - The complete dataset (≈2400 images) is used locally for model training.
 ---
 
-## 🧱 Model Architecture
+##  Model Architecture
 
 | Layer | Type | Filters | Activation |
 |-------|------|----------|-------------|
@@ -76,7 +77,7 @@ This project demonstrates an **end-to-end computer vision workflow**:
 
 ---
 
-## 📊 Training Results
+##  Training Results
 
 | Metric | Training | Validation |
 |---------|-----------|------------|
@@ -90,11 +91,11 @@ This project demonstrates an **end-to-end computer vision workflow**:
 
 ---
 
-## 🎥 Real-Time Detection
+##  Real-Time Detection
 
 The `realtime_predict.py` script integrates **MediaPipe Hands** and **OpenCV** for gesture recognition directly from the webcam.
 
-### ✨ Features
+###  Features
 - Real-time hand tracking and bounding box visualization  
 - Smooth prediction history (averaged for stability)  
 - Confidence thresholding (≥60%)  
@@ -103,7 +104,7 @@ The `realtime_predict.py` script integrates **MediaPipe Hands** and **OpenCV** f
 
 ---
 
-## 💻 Technologies Used
+##  Technologies Used
 
 - **Language:** Python 3.12.6  
 - **Frameworks:** TensorFlow, Keras  
@@ -117,31 +118,25 @@ The `realtime_predict.py` script integrates **MediaPipe Hands** and **OpenCV** f
 
 ---
 
-## ⚙️ Installation & Project Run Process
+## Run Process
 
-### 1️⃣ Clone the Repository
 
-```bash
-git clone https://github.com/arsh-mohan6/Sign-Language-Detection.git
-cd Sign-Language-Detection
-```
-
-### 2️⃣ Create a Virtual Environment
+### 1 Create a Virtual Environment
 
 ```bash
 python -m venv venv
-venv\Scripts\activate       # (Windows)
+venv\Scripts\activate       # (Windows
 # or
 source venv/bin/activate    # (Mac/Linux)
 ```
 
-### 3️⃣ Install Dependencies
+### 2 Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4️⃣ Train the Model
+### 3 Train the Model
 
 ```bash
 cd notebooks
@@ -150,21 +145,21 @@ python train_cnn.py
 
 After training:
 - Model → `../model/sign_language_cnn_model_full.h5`  
-- Training plot → `../report/training_curve.png`
+- Training plot → `../report/Accuracy.png`
 
-### 5️⃣ Run Real-Time Gesture Detection
+### 4 Run Real-Time Gesture Detection
 
 ```bash
 python realtime_predict.py
 ```
 
-✅ Opens webcam in **full screen**  
-✅ Shows bounding box, label & confidence  
-✅ Press **q** or **Esc** to close  
+ Opens webcam in **full screen**  
+ Shows bounding box, label & confidence  
+ Press **q** or **Esc** to close  
 
 ---
 
-## ✋ Supported Gestures
+## Supported Gestures
 
 | Gesture | Meaning |
 |----------|----------|
@@ -177,7 +172,7 @@ python realtime_predict.py
 
 ---
 
-## 🧑‍💻 Author
+## Author
 
 **Arsh Mohan Nishant**  
 B.Tech 3rd Year | Data Science Enthusiast  
@@ -188,7 +183,7 @@ B.Tech 3rd Year | Data Science Enthusiast
 
 ---
 
-## 🚀 Future Improvements
+##  Future Improvements
 
 - Add more gestures and dynamic sequences  
 - Deploy model using Streamlit or Flask  
@@ -197,4 +192,4 @@ B.Tech 3rd Year | Data Science Enthusiast
 
 ---
 
-> 💬 *"AI isn’t about replacing communication — it’s about enabling it for everyone."*
+>  *"AI isn’t about replacing communication — it’s about enabling it for everyone."*
