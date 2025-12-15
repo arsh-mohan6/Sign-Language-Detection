@@ -5,9 +5,6 @@ import mediapipe as mp
 from tensorflow.keras.models import load_model
 from collections import deque
 
-# -----------------------------
-# Configuration
-# -----------------------------
 IMG_SIZE = 128
 CLASSES = ["Bye", "Hello", "No", "Perfect", "Thank You", "Yes"]
 
@@ -20,9 +17,6 @@ model = load_model(MODEL_PATH)
 # Smooth prediction history
 history = deque(maxlen=7)
 
-# -----------------------------
-# Preprocessing Function
-# -----------------------------
 def preprocess(frame):
     """Crop / pad image to square and normalize."""
     h, w, _ = frame.shape
@@ -35,9 +29,7 @@ def preprocess(frame):
     frame_normalized = frame_resized / 255.0
     return np.expand_dims(frame_normalized, axis=0)
 
-# -----------------------------
-# Initialize MediaPipe Hands
-# -----------------------------
+
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands(static_image_mode=False,
                        max_num_hands=1,
@@ -45,9 +37,7 @@ hands = mp_hands.Hands(static_image_mode=False,
                        min_tracking_confidence=0.7)
 mp_draw = mp.solutions.drawing_utils
 
-# -----------------------------
-# Start Webcam
-# -----------------------------
+
 cap = cv2.VideoCapture(0)
 
 #  Make window full screen
